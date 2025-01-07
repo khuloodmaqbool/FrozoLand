@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import Link from 'next/link'
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
+import 'aos/dist/aos.css'; 
 interface PropType {
     text:string;
     bgColor: string;
@@ -12,8 +12,8 @@ interface PropType {
 const Button = ({text,bgColor}:PropType) => {
    useEffect(() => {
       AOS.init({
-        duration: 1000, // Animation duration
-        once: true,     // Animation should happen only once
+        duration: 1000, 
+        once: false,  
       });
     }, []);
   return (

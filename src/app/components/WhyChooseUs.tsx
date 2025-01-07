@@ -24,7 +24,7 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
+      duration: 1000, 
       once: false,  
     });
   }, []);
