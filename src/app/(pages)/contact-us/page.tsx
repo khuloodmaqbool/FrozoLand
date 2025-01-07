@@ -107,6 +107,7 @@ const ContactPage = () => {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Enter Your Name"
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full p-4 bg-gray-100 text-black rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FE6F69] mt-2"
@@ -120,6 +121,7 @@ const ContactPage = () => {
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="Enter your Email"
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full p-4 bg-gray-100 text-black rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FE6F69] mt-2"
@@ -132,6 +134,7 @@ const ContactPage = () => {
                 <textarea
                   id="message"
                   name="message"
+                  placeholder="Message"
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full p-4 bg-gray-100 text-black rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FE6F69] mt-2"
