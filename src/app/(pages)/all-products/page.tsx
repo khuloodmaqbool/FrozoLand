@@ -6,6 +6,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Link from "next/link";
 import Image from "next/image";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
+
 const builder = imageUrlBuilder(client);
 
 const urlFor = (source: SanityImageSource) => builder.image(source);
@@ -47,6 +50,10 @@ const AllProducts = () => {
     };
 
     fetchData();
+    AOS.init({
+      duration: 1200, // Animation duration
+      once: false,   
+    });
   }, []);
 
   return (
@@ -58,6 +65,8 @@ const AllProducts = () => {
             <div
               key={index}
               className="relative w-80 bg-[#FE6F69] p-6 rounded-2xl animate-pulse"
+              data-aos="fade-up"
+              data-aos-delay={index * 200} // Staggered animation delay for skeleton loaders
             >
               {/* Skeleton Image */}
               <div className="skeleton w-64 h-64 bg-[#FE6F69] rounded-2xl mb-4"></div>
@@ -75,26 +84,34 @@ const AllProducts = () => {
           // Display actual product data
           products.map((product: Product) => (
             <Link key={product._id} href={`/product-detail/${product._id}`}>
-              <div className="relative w-80 bg-[#FE6F69] p-6 rounded-2xl">
-                <div className="absolute top-6 left-6 w-64 h-64 bg-[#F9C31E] rounded-2xl opacity-60"></div>
-                <div className="absolute top-3 left-3 w-64 h-64 bg-[#F9C31E] rounded-2xl opacity-80"></div>
-                <div className="relative z-10 w-64 h-64 bg-[#F9C31E] rounded-2xl flex justify-center items-center">
+              <div
+                className="relative w-80 bg-[#FE6F69] p-6 rounded-2xl"
+                data-aos="fade-up"
+                data-aos-delay="200" // Delay for product card animation
+              >
+                {/* Image Zoom-in Effect */}
+                <div className="relative z-10 w-64 h-64 bg-[#F9C31E] rounded-2xl flex justify-center items-center overflow-hidden">
                   {product.image && product.image.asset ? (
                     <Image
                       src={urlFor(product.image).url()}
                       alt={product.name}
                       width={100}
                       height={100}
-                      className="w-auto h-56 rounded-2xl"
+                      className="w-auto h-56 rounded-2xl transform transition-all duration-500 hover:scale-110"
                     />
                   ) : (
                     <p className="text-center text-gray-500">No image available</p>
                   )}
                 </div>
 
-                <p className="text-white font-bold text-lg mt-6">{product.name}</p>
-                <p className="text-gray-100 text-sm">{product.shortDescription}</p>
-                <p className="text-white font-semibold text-lg mt-2">
+                {/* Text Animation for Product Name */}
+                <p className="text-white font-bold text-lg mt-6" data-aos="fade-up" data-aos-delay="400">
+                  {product.name}
+                </p>
+                <p className="text-gray-100 text-sm" data-aos="fade-up" data-aos-delay="600">
+                  {product.shortDescription}
+                </p>
+                <p className="text-white font-semibold text-lg mt-2" data-aos="fade-up" data-aos-delay="800">
                   Rs. {product.price}/-
                 </p>
                 <div className="absolute bottom-6 right-6 bg-yellow-400 p-2 rounded-full">

@@ -32,6 +32,9 @@ const Header = () => {
             <li>
               <Link href="/all-products" >Shop</Link>
             </li>
+            <li>
+              <Link href="/contact-us" >Contact Us</Link>
+            </li>
           </ul>
         </div>
         <a style={{ "fontFamily": "Dancing Script"}} className="btn btn-ghost text-xl font-bold">FrozoLand</a>
@@ -43,6 +46,9 @@ const Header = () => {
           </li>
           <li className="mx-4" >
           <Link href="/all-products" >Shop</Link>
+          </li>
+          <li className="mx-4" >
+          <Link href="/contact-us" >Contact Us</Link>
           </li>
         </ul>
       </div>
